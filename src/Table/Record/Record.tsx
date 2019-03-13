@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { MainPacient, PacientObject } from '../../Main'
+import { IRecord, RecordData } from '../../types'
 import Data from './Data'
 import Kids from './Kids'
 
 interface Props {
   columns: Array<string>,
-  item: MainPacient
+  item: IRecord
 }
 
 interface State {
@@ -20,7 +20,7 @@ export default class Row extends React.Component<Props, State> {
     }
   }
 
-  renderKids(kids: {[key: string]: { records: Array<MainPacient>}}, columnCountToBeUsed: number) {
+  renderKids(kids: {[key: string]: { records: Array<IRecord>}}, columnCountToBeUsed: number) {
     if (this.state.areKidsCollapsed || Object.keys(kids).length === 0) {
       return null
     }

@@ -1,10 +1,10 @@
 import * as React from 'react'
 import Table from '../Table'
-import { MainPacient } from '../../Main'
+import { IRecord } from '../../types'
 
 interface Props {
   kids: {[key: string]: {
-    records: Array<MainPacient>
+    records: Array<IRecord>
   }}
 }
 

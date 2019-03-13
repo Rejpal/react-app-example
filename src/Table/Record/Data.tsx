@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { PacientObject } from '../../Main'
+import { RecordData } from '../../types'
 
 interface Props {
   columns: Array<string>,
-  data: PacientObject,
+  data: RecordData,
   shouldRenderCollapser: boolean,
   onCollapserClick: () => void
 }

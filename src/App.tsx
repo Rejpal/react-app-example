@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import './App.css';
-import Main from './Main'
+import * as React from 'react'
+import './App.css'
+import Table from './Table/Table'
 import data from './api/data-1.json'
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Main data={data} />
+        <Table records={data} />
       </div>
     );
   }
