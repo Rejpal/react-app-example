@@ -20,11 +20,11 @@ export default class Row extends React.Component<Props, State> {
     }
   }
 
-  renderKids(kids: {[key: string]: { records: Array<MainPacient>}}) {
+  renderKids(kids: {[key: string]: { records: Array<MainPacient>}}, columnCountToBeUsed: number) {
     if (this.state.areKidsCollapsed || Object.keys(kids).length === 0) {
       return null
     }
-    return <Kids kids={kids} />
+    return <tr><td colSpan={columnCountToBeUsed}><Kids kids={kids} /></td></tr>
   }
 
   handleCollapserClick = () => {
@@ -41,7 +41,7 @@ export default class Row extends React.Component<Props, State> {
           shouldRenderCollapser={Object.keys(item.kids).length > 0}
           onCollapserClick={this.handleCollapserClick}
         />
-        {this.renderKids(item.kids)}
+        {this.renderKids(item.kids, columns.length + 1)}
       </React.Fragment>
     )
   }
