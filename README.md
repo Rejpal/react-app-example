@@ -3,9 +3,15 @@
 ## Description
 Small react app to show what I am capable of.
 
+## how to run the project
+1) clone the repository
+2) open clonned repository folder in command line
+2) run `yarn install` or `npm install` to install dependencies
+3) run `yarn start` or `npm start`
+
 ## Ordered Todo list
-1) create visualization of kids
-2) collapsing kid tables
+1) DONE - create visualization of kids
+2) DONE - collapsing kid tables
 3) add standardjs
 4) make jest and enzyme running
 5) add posibility to delete row
@@ -14,5 +20,6 @@ Small react app to show what I am capable of.
 
 ### Struggles notices
 - Understanding the data structure and what exactly should I make took me few days. First to data models went out of the window because the would not match the dinamic possibilies of given data.
-- Using MST will be problematic because of dynamic data. Should still be possible, but will be challenging as I have never used it on dinamic data before.
-- Typescript makes development slower but the code is more reliable. Transfer from flow is smooth so far.
+- Using MST will be problematic because of dynamic data. Should still be possible, but will be challenging as I have never used it on dynamic data before.
+- Typescript makes development slower but the code is more reliable. Transfer from flow is smoother than I have expected.
+- I am struggling with Jest and Enzyme snapshot testing so there are no tests yet. I will add them once I will figure out why the test runner is not able to parse the tsx code in test files.
