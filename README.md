@@ -12,14 +12,13 @@ Small react app to show what I am capable of.
 ## Ordered Todo list
 1) DONE - create visualization of kids
 2) DONE - collapsing kid tables
-3) add standardjs
-4) make jest and enzyme running
+3) OPTIONAL - add standardjs
+4) DONE - make jest and enzyme running
 5) add posibility to delete row
-6) add posibility to edit cells
-7) create store
+6) create store
 
 ### Struggles notices
 - Understanding the data structure and what exactly should I make took me few days. First to data models went out of the window because the would not match the dinamic possibilies of given data.
 - Using MST will be problematic because of dynamic data. Should still be possible, but will be challenging as I have never used it on dynamic data before.
 - Typescript makes development slower but the code is more reliable. Transfer from flow is smoother than I have expected.
-- I am struggling with Jest and Enzyme snapshot testing so there are no tests yet. I will add them once I will figure out why the test runner is not able to parse the tsx code in test files.
+- I was struggling with Jest and Enzyme snapshot testing. It was caused by create-react-app missinitialization when I was creating the repository.

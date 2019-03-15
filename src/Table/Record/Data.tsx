@@ -15,10 +15,20 @@ export default function Data (props: Props) {
       return null;
     }
     const dataCells = columns.map((key: string) => {
-      return (<td>{data[key]}</td>)
+      return (<td key={key}>{data[key]}</td>)
     })
 
-    const collapser = shouldRenderCollapser ? <td onClick={onCollapserClick}>x</td> : <td />
+    let collapser = null
+    if (shouldRenderCollapser) {
+      collapser = <td
+        onClick={onCollapserClick}
+        key="x"
+        id='collapserCell'
+      >x</td>
+    } else {
+      collapser = <td key="x" />
+    }
+
     const result = [collapser].concat(dataCells)
 
     if (!result) {

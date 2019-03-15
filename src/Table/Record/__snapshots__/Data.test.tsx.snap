@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Data> renders with collapser 1`] = `
+<tr>
+  <td
+    id="collapserCell"
+    key="x"
+    onClick={[MockFunction]}
+  >
+    x
+  </td>
+  <td
+    key="a"
+  >
+    testA
+  </td>
+  <td
+    key="b"
+  >
+    testB
+  </td>
+  <td
+    key="c"
+  >
+    testC
+  </td>
+</tr>
+`;
+
+exports[`<Data> renders without collapser 1`] = `
+<tr>
+  <td
+    key="x"
+  />
+  <td
+    key="a"
+  >
+    testA
+  </td>
+  <td
+    key="b"
+  >
+    testB
+  </td>
+  <td
+    key="c"
+  >
+    testC
+  </td>
+</tr>
+`;

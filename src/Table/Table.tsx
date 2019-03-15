@@ -38,9 +38,13 @@ export default class Table extends React.Component<Props> {
     const headerKeys = Object.keys(records[0].data)
     return (
       <table>
-        {this.renderTableName(tableName)}
-        <Header headerKeys={headerKeys} />
-        {this.renderRecords(headerKeys, records)}
+        <thead>
+          {this.renderTableName(tableName)}
+          <Header headerKeys={headerKeys} />
+        </thead>
+        <tbody>
+          {this.renderRecords(headerKeys, records)}
+        </tbody>
       </table>
     )
   }
