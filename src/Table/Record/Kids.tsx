@@ -12,20 +12,24 @@ interface Props {
 }
 
 export default class Kids extends React.Component<Props> {
+  get kidsKey() {
+    return Object.keys(this.props.kids)[0]
+  }
+
   handleDelete = (recordIndex: number) => {
     const { kids, updateKids } = this.props
-    const kidsKey = Object.keys(kids)[0]
-    const newRecords = [...kids[kidsKey].records]
+    const newRecords = [...kids[this.kidsKey].records]
     newRecords.splice(recordIndex, 1)
-    const newKids = newRecords.length > 0 ? {[kidsKey]: {records: newRecords}} : {}
+    const newKids = newRecords.length > 0 ? {[this.kidsKey]: {records: newRecords}} : {}
+
     updateKids(newKids)
   }
 
   handleUpdateKids = (newRecords: Array<IRecord>): void => {
-    const { kids } = this.props
-    const kidsKey = Object.keys(kids)[0]
-    const newKids = newRecords.length > 0 ? {[kidsKey]: {records: newRecords}} : {}
-    this.props.updateKids(newKids)
+    const { kids, updateKids } = this.props
+    const newKids = newRecords.length > 0 ? {[this.kidsKey]: {records: newRecords}} : {}
+
+    updateKids(newKids)
   }
 
   render() {
@@ -34,8 +38,8 @@ export default class Kids extends React.Component<Props> {
 
     if (kidsKeys.length > 0) {
       return <Table
-        tableName={kidsKeys[0]}
-        records={kids[kidsKeys[0]].records}
+        tableName={this.kidsKey}
+        records={kids[this.kidsKey].records}
         onDelete={this.handleDelete}
         updateRecords={this.handleUpdateKids}
       />

@@ -18,25 +18,27 @@ export default class Table extends React.Component<Props> {
   handleUpdateRecord = (index: number, newRecord: IRecord) => {
     const { updateRecords, records } = this.props
     const newRecords = [...records]
+
     newRecords[index] = newRecord
     updateRecords(newRecords)
   }
 
   renderRecords (columns: Array<string>, records: Array<IRecord>): Array<JSX.Element> {
     const recordComponents: Array<JSX.Element> = []
+
     records.forEach((record, index) => {
-        const recordComponent = <Record
-          columns={columns}
-          item={record}
-          itemId={index}
-          onDelete={this.handleDeleteRecord}
-          updateRecord={this.handleUpdateRecord}
-          key={index}
-        />
-        if (recordComponent) {
-          recordComponents.push(recordComponent)
-        }
-      })
+      const recordComponent = <Record
+        columns={columns}
+        item={record}
+        itemId={index}
+        onDelete={this.handleDeleteRecord}
+        updateRecord={this.handleUpdateRecord}
+        key={index}
+      />
+      if (recordComponent) {
+        recordComponents.push(recordComponent)
+      }}
+    )
 
     return recordComponents
   }
@@ -61,6 +63,7 @@ export default class Table extends React.Component<Props> {
       'Delete',
       ...dataKeys
     ]
+
     return (
       <table>
         <thead>

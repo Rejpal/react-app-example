@@ -28,8 +28,9 @@ export default class Row extends React.Component<Props, State> {
   }
 
   handleUpdateKids = (newKids: IKids) => {
-    const { item, itemId } = this.props
-    this.props.updateRecord(itemId, {
+    const { item, itemId, updateRecord } = this.props
+
+    updateRecord(itemId, {
       data: item.data,
       kids: newKids
     })
@@ -39,7 +40,14 @@ export default class Row extends React.Component<Props, State> {
     if (this.state.areKidsCollapsed || Object.keys(kids).length === 0) {
       return null
     }
-    return <tr><td colSpan={columnCountToBeUsed}><Kids kids={kids} updateKids={this.handleUpdateKids} /></td></tr>
+
+    return (
+      <tr>
+        <td colSpan={columnCountToBeUsed}>
+          <Kids kids={kids} updateKids={this.handleUpdateKids} />
+        </td>
+      </tr>
+    )
   }
 
   handleCollapserClick = () => {
