@@ -14,7 +14,6 @@ export default function renderHeader(props: Props): JSX.Element {
 
     return (
       <tr>
-        <th />
         {headerCells}
       </tr>
     )

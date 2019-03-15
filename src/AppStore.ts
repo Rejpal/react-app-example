@@ -10,13 +10,14 @@ export class AppStore {
   }
 
   @action
-  deleteItem(index: number): void {
-    this.data = this.data.slice(index + 1)
-    console.log('data', toJS(this.data))
+  deleteItem = (index: number): void => {
+    const newData = [...this.data]
+    newData.splice(index, 1)
+    this.data = newData
   }
 
   @action
-  updateData(newData: Array<IRecord>): void {
+  updateData = (newData: Array<IRecord>): void => {
     this.data = newData
   }
 }

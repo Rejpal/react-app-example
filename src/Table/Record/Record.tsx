@@ -1,11 +1,14 @@
 import * as React from 'react'
-import { IRecord, RecordData } from '../../types'
+import { IRecord, RecordData, IKids } from '../../types'
 import Data from './Data'
 import Kids from './Kids'
 
 interface Props {
   columns: Array<string>,
   item: IRecord
+  itemId: number,
+  onDelete: (itemId: number) => void,
+  updateRecord: (itemId:number, newKids: IRecord) => void
 }
 
 interface State {
@@ -20,11 +23,23 @@ export default class Row extends React.Component<Props, State> {
     }
   }
 
-  renderKids(kids: {[key: string]: { records: Array<IRecord>}}, columnCountToBeUsed: number) {
+  handleDeleteClick = () => {
+    this.props.onDelete(this.props.itemId)
+  }
+
+  handleUpdateKids = (newKids: IKids) => {
+    const { item, itemId } = this.props
+    this.props.updateRecord(itemId, {
+      data: item.data,
+      kids: newKids
+    })
+  }
+
+  renderKids(kids: IKids, columnCountToBeUsed: number) {
     if (this.state.areKidsCollapsed || Object.keys(kids).length === 0) {
       return null
     }
-    return <tr><td colSpan={columnCountToBeUsed}><Kids kids={kids} /></td></tr>
+    return <tr><td colSpan={columnCountToBeUsed}><Kids kids={kids} updateKids={this.handleUpdateKids} /></td></tr>
   }
 
   handleCollapserClick = () => {
@@ -32,7 +47,8 @@ export default class Row extends React.Component<Props, State> {
   }
 
   render () {
-    const {columns, item} = this.props
+    const { columns, item } = this.props
+    const { areKidsCollapsed } = this.state
     return (
       <React.Fragment>
         <Data
@@ -40,8 +56,10 @@ export default class Row extends React.Component<Props, State> {
           data={item.data}
           shouldRenderCollapser={Object.keys(item.kids).length > 0}
           onCollapserClick={this.handleCollapserClick}
+          isCollapsed={areKidsCollapsed}
+          onDeleteClick={this.handleDeleteClick}
         />
-        {this.renderKids(item.kids, columns.length + 1)}
+        {this.renderKids(item.kids, columns.length + 2)}
       </React.Fragment>
     )
   }

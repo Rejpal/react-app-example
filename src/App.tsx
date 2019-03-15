@@ -6,14 +6,14 @@ import AppStore from './AppStore'
 
 @observer
 class App extends React.Component {
-  handleDelete = () => {
-    AppStore.deleteItem(0)
+  handleDelete = (recordIndex: number) => {
+    AppStore.deleteItem(recordIndex)
   }
+
   render() {
     return (
       <div className="App">
-        <Table records={AppStore.data} />
-        <button onClick={this.handleDelete}>Delete first row</button>
+        <Table records={AppStore.data} onDelete={this.handleDelete} updateRecords={AppStore.updateData} />
       </div>
     );
   }
