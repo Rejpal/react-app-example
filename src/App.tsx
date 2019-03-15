@@ -1,13 +1,19 @@
 import * as React from 'react'
 import './App.css'
 import Table from './Table/Table'
-import data from './api/data-1.json'
+import { observer } from 'mobx-react'
+import AppStore from './AppStore'
 
+@observer
 class App extends React.Component {
+  handleDelete = () => {
+    AppStore.deleteItem(0)
+  }
   render() {
     return (
       <div className="App">
-        <Table records={data} />
+        <Table records={AppStore.data} />
+        <button onClick={this.handleDelete}>Delete first row</button>
       </div>
     );
   }
